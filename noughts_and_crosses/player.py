@@ -1,5 +1,5 @@
 from .position_strategy import (
-    RandomPositionSelector, MlPositionSelector)
+    RandomPositionStrategy, MlPositionStrategy)
 
 
 class Player(object):
@@ -10,11 +10,11 @@ class Player(object):
 
     @classmethod
     def initialise_random_player(cls, counter):
-        return cls(counter, RandomPositionSelector())
+        return cls(counter, RandomPositionStrategy())
 
     @classmethod
     def initialise_ml_player(cls, counter):
-        return cls(counter, MlPositionSelector.initialise_linear_selector())
+        return cls(counter, MlPositionStrategy.initialise_linear_selector())
 
     def update(self, series_recorder):
         self.position_strategy.update(self.counter, series_recorder)

@@ -3,7 +3,7 @@ import numpy as np
 from sklearn import linear_model, preprocessing
 
 
-class PositionSelector(object):
+class PositionStrategy(object):
 
     CAN_BE_UPDATED = False
 
@@ -14,13 +14,13 @@ class PositionSelector(object):
         pass
 
 
-class RandomPositionSelector(PositionSelector):
+class RandomPositionStrategy(PositionStrategy):
 
     def choose_counter_position(self, game):
         return random.randint(0, 8)
 
 
-class MlPositionSelector(PositionSelector):
+class MlPositionStrategy(PositionStrategy):
 
     CAN_BE_UPDATED = True
 
@@ -38,6 +38,9 @@ class MlPositionSelector(PositionSelector):
     def update(self, player_idx, series_recorder):
         for position_model_idx in range(9):
             boards = series_recorder.extract_boards(player_idx, position_model_idx)
+
+            if boards.size == 0:
+                continue
 
             features = create_features(boards)
             labels = series_recorder.extract_labels(player_idx, position_model_idx)
@@ -79,6 +82,9 @@ def initialise_linear_model():
 
     return lm
 
+
 pairwise_featurer = preprocessing.PolynomialFeatures(include_bias=False)
+
+
 def create_features(board):
     return pairwise_featurer.fit_transform(board)
