@@ -1,0 +1,3 @@
+
+class PlacementException(Exception):
+    pass
