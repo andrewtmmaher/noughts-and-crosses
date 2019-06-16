@@ -48,10 +48,10 @@ class TestGame():
     ])
     def test_is_over(self, board, expected_winner, expected_output):
         current_game = game.NoughtsAndCrosses(board)
-        assert current_game.winner == expected_winner
         assert current_game.is_over() == expected_output
+        assert current_game.winner == expected_winner
 
-        # We check that the inverse also leads to a correct output
+        # We check that an inversed board also leads to a correct output
         board = [counter * -1 for counter in board]
         current_game = game.NoughtsAndCrosses(board)
         assert current_game.is_over() == expected_output

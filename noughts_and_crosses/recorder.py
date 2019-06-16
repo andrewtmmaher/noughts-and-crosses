@@ -1,6 +1,11 @@
 import numpy as np
 from collections import Counter
 
+ERROR_WEIGHT = 10
+DRAW_MOVE_WEIGHT = 1
+FINAL_VICTORY_PLACEMENT_WEIGHT = 10
+VICTORY_LOSS_MODE_WEIGHT = 2
+
 
 class GameRecorder(object):
 
@@ -30,21 +35,28 @@ class SeriesRecorder(object):
         self.winners.append(game_recorder.winner)
 
         self.placement_errors.extend(
-            [[-10, *record]
+            [[-1 * ERROR_WEIGHT, *record]
              for record in game_recorder.placement_errors]
         )
 
         if game_recorder.winner is not None:
 
             self.correct_placements.extend(
-                [[2 * record[0] * game_recorder.winner, *record]
+                [[
+                    VICTORY_LOSS_MODE_WEIGHT * record[0] * game_recorder.winner,
+                    *record
+                ]
                  for record in game_recorder.correct_placements[:-1]]
             )
-            self.correct_placements.append([10, *game_recorder.correct_placements[-1]])
+            self.correct_placements.append([
+                FINAL_VICTORY_PLACEMENT_WEIGHT,
+                *game_recorder.correct_placements[-1]
+            ])
 
         else:
             self.correct_placements.extend(
-                [[1, *record] for record in game_recorder.correct_placements]
+                [[DRAW_MOVE_WEIGHT, *record]
+                 for record in game_recorder.correct_placements]
             )
 
     def extract_boards(self, counter, position):

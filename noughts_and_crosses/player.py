@@ -1,4 +1,4 @@
-from position_strategy import (
+from .position_strategy import (
     RandomPositionSelector, MlPositionSelector)
 
 

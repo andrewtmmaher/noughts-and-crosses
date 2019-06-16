@@ -1,4 +1,4 @@
-import game, player, recorder
+from . import game, player, recorder
 
 
 def play_series(number_of_episodes, number_of_games):
