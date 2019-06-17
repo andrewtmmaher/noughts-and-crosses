@@ -1,5 +1,5 @@
 import pytest
-from .. import game, exceptions
+from noughts_and_crosses import game, exceptions
 
 
 class TestGame():

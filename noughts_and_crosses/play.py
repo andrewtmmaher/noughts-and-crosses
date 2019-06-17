@@ -1,4 +1,4 @@
-from . import game, player, recorder
+from noughts_and_crosses import game, player, recorder
 
 
 def play_episodes(number_of_episodes, number_of_games):
@@ -30,7 +30,3 @@ def play_episodes(number_of_episodes, number_of_games):
             current_player.position_strategy.exploration_probability *= 0.8
 
         print()
-
-
-if __name__ == '__main__':
-    play_episodes(50, 100)

@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import patch
 
-from .. import position_strategy
+from noughts_and_crosses import position_strategy
 from sklearn import linear_model
 import numpy as np
 

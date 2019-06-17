@@ -1,4 +1,4 @@
-from .. play import play_episodes
+from noughts_and_crosses.play import play_episodes
 
 
 def test_play():

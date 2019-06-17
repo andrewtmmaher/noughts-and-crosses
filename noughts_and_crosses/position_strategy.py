@@ -59,8 +59,8 @@ class MlPositionStrategy(PositionStrategy):
         max_probability = 0
         features = create_features(np.array(board).reshape(1, -1))
         for position, model in self.position_models.items():
-            if board[position] != 0:
-                continue
+            #if board[position] != 0:
+            #    continue
             probability = model.predict_proba(features)[0][1]
             if probability >= max_probability:
                 max_probability = probability

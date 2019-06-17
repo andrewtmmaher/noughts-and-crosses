@@ -1,4 +1,4 @@
-from .. import recorder
+from noughts_and_crosses import recorder
 
 
 class TestEpisodeRecorder(object):

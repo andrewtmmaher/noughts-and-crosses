@@ -1,4 +1,4 @@
-from .position_strategy import (
+from noughts_and_crosses.position_strategy import (
     RandomPositionStrategy, MlPositionStrategy)
 
 

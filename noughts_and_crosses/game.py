@@ -1,4 +1,4 @@
-from .exceptions import PlacementException
+from noughts_and_crosses.exceptions import PlacementException
 
 
 class NoughtsAndCrosses(object):
