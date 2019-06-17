@@ -2,6 +2,21 @@ from noughts_and_crosses import game, player, recorder
 
 
 def play_episodes(number_of_episodes, number_of_games):
+    """
+    Play multiple games of noughts and crosses.
+
+    Play a number of games of noughts and crosses, each of which are separated
+    into different episodes. If any of the players in the game are based on
+    machine learning, their parameters will be updated at the end of each
+    episode.
+
+    Parameters
+    ----------
+    number_of_episodes : int
+        Number of episodes to play.
+    number_of_games : int
+        Number of games to play per episode.
+    """
 
     current_game = game.NoughtsAndCrosses()
 
